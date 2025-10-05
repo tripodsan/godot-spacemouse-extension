@@ -5,8 +5,8 @@ cmake_minimum_required(VERSION 3.17)
 if(CMAKE_C_COMPILER)
 endif()
 
-set(LIBNAME "EXTENSION-NAME" CACHE STRING "The name of the library")
-set(GODOT_PROJECT_DIR "demo" CACHE STRING "The directory of a Godot project folder")
+set(LIBNAME "spacemouse" CACHE STRING "The name of the library")
+set(GODOT_PROJECT_DIR "demo/addons/spacemouse" CACHE STRING "The directory of a Godot project folder")
 
 # Make sure all the dependencies are satisfied
 find_package(Python3 3.4 REQUIRED)
@@ -43,14 +43,19 @@ project(godot-cpp-template
     LANGUAGES CXX
 )
 
+find_library(3D_CONNECTION 3DConnexionClient)
+if (NOT 3D_CONNECTION)
+    message(FATAL_ERROR "3DConnexionClient not found")
+endif()
+
 add_library(${LIBNAME} SHARED)
 
 target_sources(${LIBNAME}
     PRIVATE
     src/register_types.cpp
     src/register_types.h
-    src/example_class.cpp
-    src/example_class.h
+    src/spacemouse.cpp
+    src/spacemouse.h
 )
 
 # Fetch a list of the xml files to use for documentation and add to our target
@@ -64,6 +69,7 @@ if(DOC_XML)
 endif()
 
 target_link_libraries(${LIBNAME} PRIVATE godot-cpp)
+target_link_libraries(${LIBNAME} PRIVATE ${3D_CONNECTION})
 
 # Require at least C++17 for this target
 set_property(TARGET ${LIBNAME} PROPERTY CXX_STANDARD 17)
@@ -80,5 +86,5 @@ set_target_properties(${LIBNAME}
 set(GODOT_PROJECT_BINARY_DIR "${PROJECT_SOURCE_DIR}/${GODOT_PROJECT_DIR}/bin/${GODOTCPP_PLATFORM}")
 
 add_custom_command(TARGET ${LIBNAME} POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:${LIBNAME}>" "${GODOT_PROJECT_BINARY_DIR}/$<TARGET_FILE_NAME:${LIBNAME}>"
+    COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:${LIBNAME}>" "${GODOT_PROJECT_BINARY_DIR}/lib$<TARGET_FILE_NAME:${LIBNAME}>"
 )

@@ -3,19 +3,19 @@
 .godot/
 
 # Ignore library files but not the gdextension file
-demo/bin/*
-!demo/bin/android
-demo/bin/android/*
-!demo/bin/android/.gitkeep
-!demo/bin/linux
-demo/bin/linux/*
-!demo/bin/linux/.gitkeep
-!demo/bin/macos
-demo/bin/macos/*
-!demo/bin/macos/.gitkeep
-!demo/bin/windows
-demo/bin/windows/*
-!demo/bin/windows/.gitkeep
+addons/spacemouse/bin/*
+!addons/spacemouse/bin/android
+addons/spacemouse/bin/android/*
+!addons/spacemouse/bin/android/.gitkeep
+!addons/spacemouse/bin/linux
+addons/spacemouse/bin/linux/*
+!addons/spacemouse/bin/linux/.gitkeep
+!addons/spacemouse/bin/macos
+addons/spacemouse/bin/macos/*
+!addons/spacemouse/bin/macos/.gitkeep
+!addons/spacemouse/bin/windows
+addons/spacemouse/bin/windows/*
+!addons/spacemouse/bin/windows/.gitkeep
 !demo/bin/*.gdextension
 .sconsign*.dblite
 

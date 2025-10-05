@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bultt24y14ymq"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="."]
+inner_radius = 1.0
+outer_radius = 2.0
+sides = 16
+ring_sides = 12

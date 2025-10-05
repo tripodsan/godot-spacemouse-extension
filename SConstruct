@@ -4,9 +4,8 @@ import sys
 
 from methods import print_error
 
-
-libname = "EXTENSION-NAME"
-projectdir = "demo"
+libname = "spacemouse"
+projectdir = "addons/spacemouse"
 
 localEnv = Environment(tools=["default"], PLATFORM="")
 
@@ -16,7 +15,7 @@ localEnv = Environment(tools=["default"], PLATFORM="")
 # Modify the example file as needed and uncomment the line below or
 # manually specify the build_profile parameter when running SCons.
 
-# localEnv["build_profile"] = "build_profile.json"
+localEnv["build_profile"] = "build_profile.json"
 
 customs = ["custom.py"]
 customs = [os.path.abspath(path) for path in customs]
@@ -39,6 +38,12 @@ env = SConscript("godot-cpp/SConstruct", {"env": env, "customs": customs})
 
 env.Append(CPPPATH=["src/"])
 sources = Glob("src/*.cpp")
+
+# Add the 3DconnexionClient library
+env.Append(CPPPATH=["/Library/Frameworks/3DconnexionClient.framework/Headers"])
+env.Append(LINKFLAGS=['-F/Library/Frameworks'])
+env.Append(LINKFLAGS=['-framework'])
+env.Append(LINKFLAGS=['3DconnexionClient'])
 
 if env["target"] in ["editor", "template_debug"]:
     try:
