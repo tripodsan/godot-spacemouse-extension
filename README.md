@@ -76,29 +76,3 @@ Contributions are welcome! If you find a bug or have an idea for an improvement 
 ## 📄 License
 
 This project is licensed under the MIT License - see the `LICENSE` file for details.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## 🤝 Contributing
-
-Contributions are welcome! If you find a bug or have an idea for an improvement (especially for Windows/Linux driver interaction), please open an issue or submit a pull request.
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the `LICENSE` file for details.
