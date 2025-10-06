@@ -5,7 +5,7 @@ compatibility_minimum = "4.1"
 
 [libraries]
 ; Relative paths ensure that our GDExtension can be placed anywhere in the project directory.
-macos.single.debug = "./macos/libspacemouse.macos.template_debug.arm64.dylib"
+macos.single.debug = "./macos/libspacemouse.macos.template_debug.dylib"
 macos.double.debug = "./macos/libspacemouse.macos.template_debug.double.dylib"
 macos.single.release = "./macos/libspacemouse.macos.template_release.dylib"
 macos.double.release = "./macos/libspacemouse.macos.template_debug.double.dylib"

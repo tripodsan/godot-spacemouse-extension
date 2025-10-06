@@ -7,3 +7,17 @@ inner_radius = 1.0
 outer_radius = 2.0
 sides = 16
 ring_sides = 12
+
+[node name="CSGTorus3D2" type="CSGTorus3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.322916, 3.8553624, 14.747202)
+inner_radius = 1.0
+outer_radius = 2.0
+sides = 16
+ring_sides = 12
+
+[node name="CSGTorus3D3" type="CSGTorus3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.471443, 3.8553624, -27.998384)
+inner_radius = 1.0
+outer_radius = 2.0
+sides = 16
+ring_sides = 12
