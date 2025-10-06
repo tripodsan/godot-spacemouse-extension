@@ -55,11 +55,15 @@ void SpacemouseDevice::messageHandler(unsigned int productID, unsigned int messa
 }
 
 void SpacemouseDevice::mouseAdded(unsigned int productID) {
-	print_line("mouse added: ", productID);
+	if (debug) {
+		print_line("mouse added: ", productID);
+	}
 }
 
 void SpacemouseDevice::mouseRemoved(unsigned int productID) {
-	print_line("mouse removed: ", productID);
+	if (debug) {
+		print_line("mouse removed: ", productID);
+	}
 }
 
 bool SpacemouseDevice::disconnect() {
@@ -70,7 +74,7 @@ bool SpacemouseDevice::disconnect() {
 	}
 	connected_device = nullptr;
 	CleanupConnexionHandlers();
-	print_line("disconnected from connection handler.");
+	print_line("3DConnexion client disconnected.");
 	return true;
 }
 
@@ -95,24 +99,26 @@ bool SpacemouseDevice::connect() {
 	if (connected_device) {
 		print_line("already connected");
 		if (connected_device != this) {
-			print_error("Spacemouse device instance mismatch");
+			// print_error("Spacemouse device instance mismatch.");
 			connected_device = this;
 			return true;
 		}
 		return false;
 	}
 
-	print_line("connecting to connection handler..");
+	if (debug) {
+		print_line("installing connexion handlers");
+	}
 	// Install message handler and register our client
 	int16_t error = SetConnexionHandlers(on_message, on_mouse_added, on_mouse_removed, false);
 	if (error) {
-		print_line("failed to set connection handler: ", error);
+		print_error("Failed to set connection handler: ", error);
 		return false;
 	}
 
 	connexionClientID = RegisterConnexionClient(0L, nullptr, kConnexionClientModeTakeOver, kConnexionMaskAll);
 
-	print_line("registered cx client: ", connexionClientID);
+	print_line("Registered 3DConnexion client: ", connexionClientID);
 	if (connexionClientID) {
 		connected_device = this;
 		SetConnexionClientButtonMask(connexionClientID, kConnexionMaskAllButtons);
