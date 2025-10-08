@@ -1,4 +1,4 @@
-## Godot Space Navigator (Godot 4 Plugin) 🚀
+## Godot 3DX Mouse (Godot 4 Plugin) 🚀
 
 This is a Godot Engine 4.x editor plugin that adds native support for **3Dconnexion Space Mouse** devices, enabling **6 Degrees of Freedom (6DOF)** control over the 3D viewport camera.
 
